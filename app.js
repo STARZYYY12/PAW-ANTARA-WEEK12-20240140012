@@ -7,16 +7,20 @@ const authRoutes = require('./routes/auth.routes');
 const searchRoutes = require('./routes/search.routes');
 const demoRoutes = require('./routes/demo.routes');
 const pageRoutes = require('./routes/page.routes');
+const guestbookRoutes = require('./routes/guestbook.routes');
 
 const app = express();
 
+// 1. Setting View Engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('public'));
 
+// 2. Middleware Parsing (Dibenarkan: extended, bukan exteanded)
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // buat baca body dari form HTML biasa
+app.use(express.urlencoded({ extended: true }));
 
+// 3. Middleware Session
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'secret-default',
@@ -29,10 +33,12 @@ app.use(
   })
 );
 
+// 4. Registrasi Seluruh Router (Dipasang SETELAH middleware parsing & session)
 app.use('/', authRoutes);
 app.use('/', searchRoutes);
 app.use('/', demoRoutes);
 app.use('/', pageRoutes);
+app.use('/', guestbookRoutes);
 
 const PORT = process.env.PORT || 3000;
 
