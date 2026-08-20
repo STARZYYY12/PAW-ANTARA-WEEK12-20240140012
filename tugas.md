@@ -1,7 +1,7 @@
 # Laporan Praktikum Keamanan Web (WEEK 12)
 
-**NIM:** [Isi NIM Kamu]  
-**Nama:** STARZYYY  
+**NIM:** [20240140012]
+**Nama:** Faiz Rizky Kurniawan 
 **Kelas:** PAW Kelas B  
 
 ---
